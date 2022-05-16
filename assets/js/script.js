@@ -138,6 +138,7 @@ const handleItemSelection = (event) => {
     );
 
     if (eventExists) {
+      //modal to flag
       //find a way to flag it on screen to the user
       console.log("Item is already selected");
       alert("This item has already been selected");
@@ -148,9 +149,34 @@ const handleItemSelection = (event) => {
         writeToLocalStorage("myEvents", myEvents);
       } else {
         //remove from array and add new item to remain at 3 items max
-        const addMoreItems = confirm(
-          "Would you like to replace the first item selected with this item?"
-        );
+        // const addMoreItems = confirm(
+        //   "Would you like to replace the first item selected with this item?"
+        // );
+
+        const modalFood = ` <div class="modal is-active" id="food-modal">
+<div class="modal-background" id="food-modal-background"></div>
+<div
+  class="modal-card"
+  id="modal-food-content"
+>
+<div class="modal-card-body">
+  <p class="mb-6">
+    Would you like to replace the first item selected with this item?
+  </p>
+  </div>
+
+  <footer class="modal-card-foot">
+    <button class="button is-success" id="food-confirm">Yes</button>
+    <button class="button modal-close" aria-label="close">No</button>
+  </footer>
+  </div>
+</div>`;
+
+        $("#main").append(modalFood);
+
+//add event listener to success button on line 169
+//on click we want to close modal 
+//and then do this code to run 182-187 - if block will not be necessary
 
         if (addMoreItems) {
           currentEventSelection.shift();
@@ -821,7 +847,17 @@ const handleStartClick = () => {
   //on click of "continue" button, remove music container and render event card template
   //on click of "print" button, the print option opens (to look into!!!)
 };
-
+//modal close function
+const closeModal = (event) => {
+  if (
+    event.target.className === "modal-background" ||
+    event.target.className === "modal-close"
+  ) {
+    $("#food-modal").hide();
+  }
+};
+//target close button on modal
+$(document).on("click", closeModal);
 // On load
 const onReady = () => {
   //event listener for mobile burger bar menu for html pages -Youtube NetNinja Bulma
