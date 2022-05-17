@@ -114,7 +114,7 @@ const updateAsideList = (theseChosenItems) => {
 const handleItemSelection = (event) => {
   //need to look into amending the array (maybe pushing first one out, getting new one in at end of array)
   event.stopPropagation();
-  const currentEventName = $("#event-select").text();
+  const currentEventName = $("#event-select").text() || "geey";
 
   const targetName = $(event.target).attr("data-value");
   const targetType = $(event.target).attr("data-type");
@@ -132,6 +132,21 @@ const handleItemSelection = (event) => {
   const currentEvent = myEvents[currentEventIndex];
   let currentEventSelection = currentEvent[targetType];
 
+  const replaceFoodItem = () => {
+    // // currentEventSelection.shift();
+    console.log(currentEventSelection);
+    currentEventSelection = currentEventSelection.splice(0, 1, chosenItem);
+    //  currentEventSelection.push(chosenItem);
+    currentEvent[targetType] = currentEventSelection;
+    myEvents[currentEventIndex] = currentEvent;
+    $("#food-modal").remove();
+    console.log(currentEvent);
+    // currentEventSelection.push(chosenItem);
+
+    // myEvents[currentEventIndex][targetType] = currentEventSelection;
+    // writeToLocalStorage("myEvents", myEvents);
+  };
+
   if (currentEventSelection) {
     const eventExists = currentEventSelection.some(
       (item) => item.targetName === chosenItem.targetName
@@ -145,7 +160,9 @@ const handleItemSelection = (event) => {
     } else {
       if (currentEventSelection.length < 3) {
         currentEventSelection.push(chosenItem);
-        myEvents[currentEventIndex][targetType] = currentEventSelection;
+        currentEvent[targetType] = currentEventSelection;
+        myEvents[currentEventIndex] = currentEvent;
+        // myEvents[currentEventIndex][targetType] = currentEventSelection;
         writeToLocalStorage("myEvents", myEvents);
       } else {
         //remove from array and add new item to remain at 3 items max
@@ -173,19 +190,21 @@ const handleItemSelection = (event) => {
 </div>`;
 
         $("#main").append(modalFood);
+        //add event listener to success button on line 170
+        $("#food-confirm").click(replaceFoodItem);
 
-//add event listener to success button on line 169
-//on click we want to close modal 
-//and then do this code to run 182-187 - if block will not be necessary
+        //on click we want to close modal
 
-        if (addMoreItems) {
-          currentEventSelection.shift();
+        //and then do this code to run 185 -191 if block will not be necessary
 
-          currentEventSelection.push(chosenItem);
+        // if (addMoreItems) {
+        //   currentEventSelection.shift();
 
-          myEvents[currentEventIndex][targetType] = currentEventSelection;
-          writeToLocalStorage("myEvents", myEvents);
-        }
+        //   currentEventSelection.push(chosenItem);
+
+        //   myEvents[currentEventIndex][targetType] = currentEventSelection;
+        //   writeToLocalStorage("myEvents", myEvents);
+        // }
       }
     }
   } else {
@@ -830,6 +849,7 @@ const renderForm = () => {
 </section>`);
 
   $("#event-details-form").submit(saveEventDetails);
+  // renderFoodSection();
 };
 
 //Handling start page click
