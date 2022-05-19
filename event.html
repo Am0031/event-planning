@@ -8,16 +8,19 @@
   <title>Event Planning | Event Card</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Oxygen:wght@300;400;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
 
   <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
-<body>
+<body class="flex-wrapper">
   <!--Header with Nav links and logo-->
   <header>
     <nav class="navbar has-background-primary has-shadow is-primary">
@@ -39,98 +42,36 @@
       </div>
     </nav>
   </header>
-  <main>
+  <main class="main" id="main">
     <!--saved cards div-->
-    <section class="section">
+    <section class="section saved-events-section" id="saved-events-section">
+      <h1 class="title has-text-centered" id="saved-events-title">My Saved Events</h1>
       <!--event card 1-->
-      <div class="event-card first-card card">
-        <!--event name generated from user input-->
-        <h2 class=" title is-4 card-header-title has-text-centered" id="event-card-name">Event name</h2>
-        <!--event details div 1-->
-        <div class="event-details card">
-          <ul class="card-content">
-            <li class="event-list-item" id="event-date-1">Event date</li>
-            <li class="event-list-item" id="event-location-1">
-              Event location
-            </li>
-            <li class="event-list-item" id="event-music-1">Event music</li>
-            <li class="event-list-item" id="event-food-1">Event food</li>
-          </ul>
-        </div>
-      </div>
-      <!--event card 2-->
-      <div class="event-card card">
-        <!--event name generated from user input-->
-        <h2 class="title is-4 card-header-title has-text-centered" id="event-card-name">Event name</h2>
-        <!--event details div 2-->
-        <div class="event-details card">
-          <ul class="card-content">
-            <li class="event-list-item" id="event-date-2">Event date</li>
-            <li class="event-list-item" id="event-location-2">
-              Event location
-            </li>
-            <li class="event-list-item" id="event-music-2">Event music</li>
-            <li class="event-list-item" id="event-food-2">Event food</li>
-          </ul>
-        </div>
-      </div>
-      <!--event card 3-->
-      <div class="event-card card">
-        <!--event name generated from user input-->
-        <h2 class="title is-4 card-header-title has-text-centered" id="event-card-name">Event name</h2>
-        <!--event details div 3-->
-        <div class="event-details card">
-          <ul class="card-content">
-            <li class="event-list-item" id="event-date-3">Event date</li>
-            <li class="event-list-item" id="event-location-3">
-              Event location
-            </li>
-            <li class="event-list-item" id="event-music-3">Event music</li>
-            <li class="event-list-item" id="event-food-3">Event food</li>
-          </ul>
-        </div>
-      </div>
-      <!--event card 4-->
-      <div class="event-card card">
-        <!--event name generated from user input-->
-        <h2 class="title is-4 card-header-title has-text-centered" id="event-card-name">Event name</h2>
-        <!--event details div 4-->
-        <div class="event-details card">
-          <ul class="card-content">
-            <li class="event-list-item" id="event-date-4">Event date</li>
-            <li class="event-list-item" id="event-location-4">
-              Event location
-            </li>
-            <li class="event-list-item" id="event-music-4">Event music</li>
-            <li class="event-list-item" id="event-food-4">Event food</li>
-          </ul>
-        </div>
-      </div>
+      <div class="saved-events-container is-align-items-center" id="saved-events-container"></div>
 
     </section>
+
   </main>
-  <!--footer section-->
+
   <!--footer section-->
   <footer class="footer has-background-primary has-shadow is-primary">
     <div class="footer-container">
-
       <div class="footer-link-item">
         <a class="has-text-white py-6 social-icon" href="mailto:eventplanning.co.uk" target="_blank">
           <ion-icon name="mail-outline"></ion-icon>
         </a>
-        <a class="has-text-white py-6 social-icon " href="https://github.com/Am0031" target="_blank">
+        <a class="has-text-white py-6 social-icon" href="https://github.com/Am0031" target="_blank">
           <ion-icon name="logo-github"></ion-icon>
         </a>
       </div>
       <p class="has-text-white pb-3">Copyright &copy; 2022 Event Planning</p>
     </div>
-    <div>
-
-    </div>
+    <div></div>
   </footer>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/event.js"></script>
 </body>
 
 </html>
